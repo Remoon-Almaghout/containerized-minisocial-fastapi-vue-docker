@@ -10,12 +10,27 @@
 - E2E Testing with Playwright
 - Docker Compose setup\*\*
 
+- Feed Public
 ![Public Feed](./docs/screenshots/feed-public.png)
+
+
+- Login
 ![Login](./docs/screenshots/login.png)
+
+
+-Register
 ![Register](./docs/screenshots/register.png)
+
+-Feed auth
 ![Feed (eingeloggt)](./docs/screenshots/feed-auth.png)
+
+-Profile
 ![Profilseite](./docs/screenshots/profile.png)
+
+-Swaager
 ![Swagger](./docs/screenshots/Swagger-docs.png)
+
+-Docker
 ![Docker](./docs/screenshots/docker.png)
 
 MiniSocial ist eine moderne Full-Stack Social-Media-Webanwendung mit Benutzerregistrierung, Authentifizierung, Posts, Bild-Upload, Likes, Kommentaren und Profilseiten.
@@ -40,25 +55,6 @@ MiniSocial ist eine moderne **Full-Stack Social Media Web Application**, entwick
 - 🧪 E2E Testing mit Playwright
 
 Das Projekt demonstriert professionelle Architektur, saubere Trennung von Backend & Frontend sowie produktionsnahe Deployment-Strukturen.
-
----
-
-# 📸 Screenshots
-
-_(Screenshots im Ordner `docs/screenshots/` einfügen)_
-
-```bash
-docs/screenshots/
-```
-
-Empfohlene Dateien:
-
-- feed-public.png
-- login.png
-- register.png
-- feed-auth.png
-- profile.png
-- swagger-docs.png
 
 ---
 
@@ -252,14 +248,9 @@ npm run test:e2e
 
 Getestet wird:
 
+- Routing
 - Register
 - Login
-- Post erstellen
-- Bearbeiten
-- Löschen
-- Like / Unlike
-- Kommentare
-- Profilseite
 
 ---
 
