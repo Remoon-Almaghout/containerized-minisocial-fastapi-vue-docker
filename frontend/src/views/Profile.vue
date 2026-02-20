@@ -4,8 +4,11 @@ import { useRoute } from "vue-router";
 import api from "../api/client";
 import { me, isAuthed } from "../auth";
 import { useToast } from "../ui/toast";
+import { useConfirm } from "../ui/confirm";
+import { watch } from "vue";
 
 const { push } = useToast();
+const { ask } = useConfirm();
 
 const route = useRoute();
 const user = ref(null);
@@ -62,9 +65,17 @@ const saveEdit = async (postId) => {
 };
 
 const deletePost = async (postId) => {
-  if (!confirm("Post wirklich löschen?")) return;
+  const ok = await ask({
+    title: "Post löschen?",
+    message: "Willst du diesen Post wirklich löschen? Das kann nicht rückgängig gemacht werden.",
+    confirmText: "Löschen",
+    cancelText: "Abbrechen",
+    danger: true,
+  });
+
+  if (!ok) return;
   await api.delete(`/posts/${postId}`);
-  push("Post gelöscht ✅", "success");
+  push("Post gelöscht 🗑️", "success");
   await loadProfile();
 };
 
@@ -80,7 +91,11 @@ const toggleComments = async (postId) => {
   }
 };
 
-onMounted(loadProfile);
+watch(
+  () => route.params.id,
+  () => loadProfile(),
+  { immediate: true }
+);
 </script>
 
 <template>

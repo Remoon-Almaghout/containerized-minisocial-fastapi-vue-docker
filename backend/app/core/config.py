@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=True)
 
-    DATABASE_URL: str = "sqlite:///./data/app.db"
+    DATABASE_URL: str = "sqlite:////app/data/app.db"
     JWT_SECRET: str = "change-me-super-secret"  
     JWT_ALG: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MIN: int = 60

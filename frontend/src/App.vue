@@ -21,7 +21,7 @@ onMounted(refreshMe)
 </script>
 
 <template>
-  <div class="min-h-screen bg-slate-50 text-slate-900">
+  <div class="min-h-screen flex flex-col bg-slate-50 text-slate-900">
     <!-- Top Bar -->
     <header class="sticky top-0 z-50 backdrop-blur bg-white/75 border-b border-slate-200">
       <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -90,7 +90,7 @@ onMounted(refreshMe)
     </header>
 
     <!-- Page Container -->
-    <main class="max-w-3xl mx-auto px-4 py-6">
+    <main class="flex-grow max-w-3xl mx-auto px-4 py-6 w-full">
       <RouterView />
     </main>
     <ConfirmModal />

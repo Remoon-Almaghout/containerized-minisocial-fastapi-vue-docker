@@ -59,24 +59,32 @@ const loadPosts = async (append = false) => {
 
 const createPost = async () => {
   if (!me.value) return;
-  const res = await api.post('/posts', { content: content.value })
 
-  if (file.value) {
-    const formData = new FormData()
-    formData.append('file', file.value)
+  try {
+    const res = await api.post('/posts', { content: content.value })
 
-    await api.post(`/posts/${res.data.id}/image`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    })
+    if (file.value) {
+      const formData = new FormData()
+      formData.append('file', file.value)
+
+      await api.post(`/posts/${res.data.id}/image`, formData)
+    }
+
+    const hadFile = !!file.value
+
+    content.value = ''
+    file.value = null
+    if (fileInput.value) fileInput.value.value = ""
+
+    resetFeed()
+    await loadPosts(false)
+
+    push(hadFile ? "Post + Bild hochgeladen ✅" : "Post erstellt ✅", "success")
+
+  } catch (err) {
+    push("Fehler beim Erstellen des Posts ❌", "error")
+    console.error(err)
   }
-
-  content.value = ''
-  file.value = null
-  if (fileInput.value) fileInput.value.value = ""; 
-  resetFeed()
-  await loadPosts(false)
-  push(file.value ? "Post + Bild hochgeladen ✅" : "Post erstellt ✅", "success");
-
 }
 
 const deletePost = async (id) => {
@@ -96,7 +104,6 @@ const deletePost = async (id) => {
   await loadPosts(false);
 };
 
-
 const onFileChange = (e) => {
   file.value = e.target.files?.[0] ?? null
 }
@@ -113,7 +120,6 @@ const cancelEdit = () => {
 
 const saveEdit = async (id) => {
   await api.put(`/posts/${id}`, { content: editedContent.value });
-  push("Post aktualisiert ✅", "success");
   editingPostId.value = null;
   editedContent.value = "";
   resetFeed();
@@ -136,18 +142,25 @@ const loadMe = async () => {
   }
 }
 
-const likePost = async (post) => {
+const toggleLike = async (post) => {
   if (!me.value) return;
-  await api.post(`/posts/${post.id}/like`)
-  resetFeed()
-  await loadPosts(false)
-}
 
-const unlikePost = async (post) => {
-  if (!me.value) return;
-  await api.delete(`/posts/${post.id}/like`)
-  resetFeed()
-  await loadPosts(false)
+  const wasLiked = post.liked_by_me
+
+  post.liked_by_me = !wasLiked
+  post.likes_count += wasLiked ? -1 : 1
+
+  try {
+    if (wasLiked) {
+      await api.delete(`/posts/${post.id}/like`)
+    } else {
+      await api.post(`/posts/${post.id}/like`)
+    }
+  } catch (err) {
+    // Rollback
+    post.liked_by_me = wasLiked
+    post.likes_count += wasLiked ? 1 : -1
+  }
 }
 
 const loadComments = async (postId) => {
@@ -329,7 +342,7 @@ onMounted(async () => {
           <div class="flex items-center gap-3">
             <button
               v-if="me"
-              @click="post.liked_by_me ? unlikePost(post) : likePost(post)"
+              @click="toggleLike(post)"
               class="px-3 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm"
             >
               <span class="mr-1">{{ post.liked_by_me ? "❤️" : "🤍" }}</span>

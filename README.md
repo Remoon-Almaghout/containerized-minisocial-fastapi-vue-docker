@@ -11,26 +11,31 @@
 - Docker Compose setup\*\*
 
 ## Feed Public
+
 ![Public Feed](./docs/screenshots/feed-public.png)
 
-
 ## Login
+
 ![Login](./docs/screenshots/login.png)
 
-
 ## Register
+
 ![Register](./docs/screenshots/register.png)
 
 ## Feed auth
+
 ![Feed (eingeloggt)](./docs/screenshots/feed-auth.png)
 
 ## Profile
+
 ![Profilseite](./docs/screenshots/profile.png)
 
 ## Swaager
+
 ![Swagger](./docs/screenshots/Swagger-docs.png)
 
 ## Docker
+
 ![Docker](./docs/screenshots/docker.png)
 
 MiniSocial ist eine moderne Full-Stack Social-Media-Webanwendung mit Benutzerregistrierung, Authentifizierung, Posts, Bild-Upload, Likes, Kommentaren und Profilseiten.
@@ -217,19 +222,21 @@ minisocial/
 docker compose up --build
 ```
 
-Frontend:
+(Migrations laufen automatisch beim Start des Backend-Containers.)
+
+# Frontend:
 
 ```
 http://localhost:8080
 ```
 
-Backend:
+# Backend:
 
 ```
 http://localhost:8000
 ```
 
-Swagger Docs:
+# Swagger Docs:
 
 ```
 http://localhost:8000/docs
@@ -310,7 +317,3 @@ GET /users/{id}/posts
 - E2E Testing
 
 ---
-
-# 📜 Lizenz
-
-MIT License
