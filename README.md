@@ -10,27 +10,27 @@
 - E2E Testing with Playwright
 - Docker Compose setup\*\*
 
-- Feed Public
+## Feed Public
 ![Public Feed](./docs/screenshots/feed-public.png)
 
 
-- Login
+## Login
 ![Login](./docs/screenshots/login.png)
 
 
--Register
+## Register
 ![Register](./docs/screenshots/register.png)
 
--Feed auth
+## Feed auth
 ![Feed (eingeloggt)](./docs/screenshots/feed-auth.png)
 
--Profile
+## Profile
 ![Profilseite](./docs/screenshots/profile.png)
 
--Swaager
+## Swaager
 ![Swagger](./docs/screenshots/Swagger-docs.png)
 
--Docker
+## Docker
 ![Docker](./docs/screenshots/docker.png)
 
 MiniSocial ist eine moderne Full-Stack Social-Media-Webanwendung mit Benutzerregistrierung, Authentifizierung, Posts, Bild-Upload, Likes, Kommentaren und Profilseiten.
