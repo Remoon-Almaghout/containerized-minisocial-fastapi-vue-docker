@@ -6,6 +6,7 @@ import { me, isAuthed } from "../auth";
 import { useToast } from "../ui/toast";
 import { useConfirm } from "../ui/confirm";
 import { watch } from "vue";
+import  { API_BASE } from "../api/config"
 
 const { push } = useToast();
 const { ask } = useConfirm();
@@ -210,7 +211,7 @@ watch(
 
           <img
             v-if="post.image_path"
-            :src="'http://localhost:8000' + post.image_path"
+            :src="API_BASE + post.image_path"
             class="rounded-2xl mt-4 w-full border border-slate-200"
           />
 

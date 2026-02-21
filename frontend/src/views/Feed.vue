@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import api from '../api/client'
 import { useToast } from "../ui/toast";
 import { useConfirm } from "../ui/confirm";
+import  { API_BASE } from "../api/config"
 
 const { push } = useToast();
 const { ask } = useConfirm();
@@ -332,7 +333,7 @@ onMounted(async () => {
         <!-- Image -->
         <div v-if="post.image_path" class="px-5 pb-5">
           <img
-            :src="'http://localhost:8000' + post.image_path"
+            :src="API_BASE + post.image_path"
             class="rounded-2xl w-full max-h-[520px] object-cover border border-slate-200"
           />
         </div>
