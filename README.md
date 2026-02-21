@@ -207,6 +207,13 @@ minisocial/
 
 ---
 
+## 🌍 Live Demo
+
+Frontend: https://containerized-minisocial-fastapi-vu.vercel.app  
+Backend (Swagger): https://minisocial-backend-n4ut.onrender.com/docs
+
+---
+
 # 🐳 Run with Docker
 
 ## Voraussetzungen
