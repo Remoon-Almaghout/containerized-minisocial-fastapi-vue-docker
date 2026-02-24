@@ -175,8 +175,8 @@ minisocial/
 │   │   ├── db/
 │   │   ├── schemas/
 │   │   └── main.py
-│   ├── data/        # SQLite DB / Persistenz (je nach Setup)
-│   ├── uploads/     # hochgeladene Bilder (File-Upload)
+│   ├── data/
+│   ├── uploads/
 │   ├── Dockerfile
 │   └── requirements.txt
 │
@@ -192,8 +192,7 @@ minisocial/
 │   │   ├── App.vue
 │   │   ├── main.js
 │   │   └── style.css
-│   ├── tests/
-│   │   ├── e2e/
+│   ├── tests/e2e/
 │   │   ├── api/
 │   │   ├── helpers/
 │   │   ├── pages/
