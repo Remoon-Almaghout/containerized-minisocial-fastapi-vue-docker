@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { useToast } from "../ui/toast";
+import { useToast } from "../../ui/toast";
 const { state, remove } = useToast();
 
 const cls = (t) => {

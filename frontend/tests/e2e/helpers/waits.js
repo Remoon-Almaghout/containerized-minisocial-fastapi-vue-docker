@@ -1,12 +1,11 @@
 import { expect } from '@playwright/test'
+import { S } from './selectors'
 
-export async function expectFeedReady(page) {
-  // Feed route ist da
-  await expect(page).toHaveURL(/\/feed/, { timeout: 15000 })
+export async function waitForAppReady(page) {
+  await expect(page.locator(S.app.title)).toBeVisible()
+}
 
-  // Wenn eingeloggt: Create-Post-Textarea muss erscheinen
-  // (warte bewusst länger, weil /auth/me + posts lädt)
-  await expect(page.getByPlaceholder("What's on your mind?")).toBeVisible({
-    timeout: 15000,
-  })
+export async function waitForFeed(page) {
+  await expect(page).toHaveURL(/\/feed/)
+  await waitForAppReady(page)
 }

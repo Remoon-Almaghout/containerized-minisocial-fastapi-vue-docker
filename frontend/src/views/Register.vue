@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from 'vue'
-import api from '../api/client'
 import { useRouter } from 'vue-router'
-import { setToken, refreshMe } from '../auth'
+import { useAuth } from '../composables/useAuth'
 
 const username = ref('')
 const email = ref('')
@@ -11,30 +10,39 @@ const error = ref('')
 const loading = ref(false)
 
 const router = useRouter()
+const { register: doRegister } = useAuth()
 
 const register = async () => {
   error.value = ''
 
-  if (!username.value || !email.value || !password.value) {
+  const u = username.value.trim()
+  const e = email.value.trim()
+
+  if (!u || !e || !password.value) {
     error.value = 'Bitte alle Felder ausfüllen.'
     return
   }
 
-  loading.value = true
+  // optional: schnelle client-side validation
+  if (password.value.length < 6) {
+    error.value = 'Passwort muss mindestens 6 Zeichen haben.'
+    return
+  }
 
+  loading.value = true
   try {
-    const res = await api.post('/auth/register', {
-      username: username.value,
-      email: email.value,
+    await doRegister({
+      username: u,
+      email: e,
       password: password.value,
     })
 
-    setToken(res.data.access_token)
-    await refreshMe()
     router.push('/feed')
-  } catch (e) {
+  } catch (err) {
     error.value =
-      e.response?.data?.detail || e.response?.data?.message || 'Registrierung fehlgeschlagen.'
+      err.response?.data?.detail ||
+      err.response?.data?.message ||
+      (err.request ? 'Server nicht erreichbar / CORS Problem.' : 'Registrierung fehlgeschlagen.')
   } finally {
     loading.value = false
   }

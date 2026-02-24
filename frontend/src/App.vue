@@ -1,11 +1,12 @@
 <script setup>
-import { onMounted, computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { me, isAuthed, refreshMe, logout as doLogout } from './auth'
-import ToastHost from './components/ToastHost.vue'
-import ConfirmModal from './components/ConfirmModal.vue'
+import { useAuth } from './composables/useAuth'
+import ToastHost from './components/ui/ToastHost.vue'
+import ConfirmModal from './components/ui/ConfirmModal.vue'
 
 const router = useRouter()
+const { me, isAuthed, refreshMe, logout: doLogout } = useAuth()
 
 const initials = computed(() => {
   if (!me.value?.username) return 'MS'
@@ -17,7 +18,9 @@ const logout = () => {
   router.push('/login')
 }
 
-onMounted(refreshMe)
+onMounted(() => {
+  refreshMe()
+})
 </script>
 
 <template>
@@ -29,7 +32,7 @@ onMounted(refreshMe)
           <div
             class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center font-semibold text-sm"
           >
-            MS
+            {{ initials }}
           </div>
           <div class="leading-tight">
             <h1 class="text-base font-semibold">MiniSocial</h1>
@@ -46,7 +49,7 @@ onMounted(refreshMe)
           </RouterLink>
 
           <RouterLink
-            v-if="isAuthed && me"
+            v-if="isAuthed && me?.id"
             :to="`/profile/${me.id}`"
             class="px-3 py-2 rounded-xl text-sm text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition"
           >
@@ -69,7 +72,7 @@ onMounted(refreshMe)
             Register
           </RouterLink>
 
-          <div v-if="isAuthed && me" class="flex items-center gap-2 ml-1">
+          <div v-if="isAuthed && me?.id" class="flex items-center gap-2 ml-1">
             <RouterLink :to="`/profile/${me.id}`" class="hidden sm:flex items-center gap-2">
               <div
                 class="h-9 w-9 rounded-full bg-slate-200 grid place-items-center text-xs font-semibold"
@@ -93,9 +96,11 @@ onMounted(refreshMe)
     <main class="flex-grow max-w-3xl mx-auto px-4 py-6 w-full">
       <RouterView />
     </main>
+
     <ConfirmModal />
     <ToastHost />
-
+    
+    <!--  Footer  -->
     <footer class="max-w-3xl mx-auto px-4 pb-10 text-xs text-slate-400">
       <p>MiniSocial • FastAPI + Vue 3 • JWT • SQLite • Docker</p>
     </footer>

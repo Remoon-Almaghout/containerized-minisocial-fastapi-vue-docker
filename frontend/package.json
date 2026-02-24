@@ -8,8 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "format": "prettier --write --experimental-cli src/",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e": "cross-env E2E_EXTERNAL=1 E2E_BASE_URL=http://localhost:8080 npx playwright test",
+    "test:e2e:ui": "cross-env E2E_EXTERNAL=1 E2E_BASE_URL=http://localhost:8080 npx playwright test --ui",
+    "test:api": "cross-env API_BASE_URL=http://localhost:8000 npx playwright test tests/e2e/api"
   },
   "dependencies": {
     "axios": "^1.13.5",
@@ -20,6 +21,7 @@
     "@playwright/test": "^1.58.2",
     "@vitejs/plugin-vue": "^6.0.4",
     "autoprefixer": "^10.4.24",
+    "cross-env": "^10.1.0",
     "postcss": "^8.5.6",
     "prettier": "3.8.1",
     "tailwindcss": "^3.4.19",

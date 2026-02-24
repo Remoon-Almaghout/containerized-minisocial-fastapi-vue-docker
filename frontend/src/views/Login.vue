@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from 'vue'
-import api from '../api/client'
 import { useRouter } from 'vue-router'
-import { setToken, refreshMe } from '../auth'
+import { useAuth } from '../composables/useAuth'
+
+const { login: doLogin } = useAuth()
 
 const email = ref('')
 const password = ref('')
@@ -13,32 +14,28 @@ const router = useRouter()
 
 const login = async () => {
   error.value = ''
-  
-  if (!email.value || !password.value) {
+
+  const emailTrimmed = email.value.trim()
+
+  if (!emailTrimmed || !password.value) {
     error.value = 'Bitte Email und Passwort eingeben.'
     return
   }
 
   loading.value = true
-
   try {
-    const res = await api.post('/auth/login', {
-      email: email.value,
-      password: password.value
+    await doLogin({
+      email: emailTrimmed,
+      username: emailTrimmed,
+      password: password.value,
     })
 
-    setToken(res.data.access_token)
-
-    // User-Daten neu laden
-    await refreshMe()
-
-    // Weiterleitung
     router.push('/feed')
-
   } catch (e) {
     error.value =
+      e.response?.data?.detail ||
       e.response?.data?.message ||
-      'Login fehlgeschlagen (Email/Passwort falsch).'
+      (e.request ? 'Server nicht erreichbar / CORS Problem.' : 'Login fehlgeschlagen.')
   } finally {
     loading.value = false
   }
@@ -49,13 +46,10 @@ const login = async () => {
   <div class="max-w-md mx-auto">
     <div class="bg-white border border-slate-200 rounded-3xl shadow-sm p-8">
       <h2 class="text-2xl font-semibold">Welcome back</h2>
-      <p class="text-sm text-slate-500 mt-1">
-        Login to like, comment and post.
-      </p>
+      <p class="text-sm text-slate-500 mt-1">Login to like, comment and post.</p>
 
       <div class="mt-6">
         <form @submit.prevent="login" class="space-y-3">
-
           <input
             v-model="email"
             type="email"
@@ -80,10 +74,7 @@ const login = async () => {
 
           <p class="text-sm text-slate-500 text-center pt-2">
             No account?
-            <RouterLink
-              to="/register"
-              class="text-slate-900 font-semibold hover:underline"
-            >
+            <RouterLink to="/register" class="text-slate-900 font-semibold hover:underline">
               Register
             </RouterLink>
           </p>
@@ -91,7 +82,6 @@ const login = async () => {
           <p v-if="error" class="text-sm text-red-600 mt-3">
             {{ error }}
           </p>
-
         </form>
       </div>
     </div>

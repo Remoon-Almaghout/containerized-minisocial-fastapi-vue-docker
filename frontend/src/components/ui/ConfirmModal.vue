@@ -1,6 +1,17 @@
 <script setup>
-import { useConfirm } from "../ui/confirm";
-const { state, confirm, cancel } = useConfirm();
+import { onMounted, onBeforeUnmount } from 'vue'
+import { useConfirm } from '../../ui/confirm'
+
+const { state, confirm, cancel } = useConfirm()
+
+const onKeyDown = (e) => {
+  if (!state.open) return
+  if (e.key === 'Escape') cancel()
+  if (e.key === 'Enter') confirm()
+}
+
+onMounted(() => window.addEventListener('keydown', onKeyDown))
+onBeforeUnmount(() => window.removeEventListener('keydown', onKeyDown))
 </script>
 
 <template>
@@ -10,7 +21,10 @@ const { state, confirm, cancel } = useConfirm();
 
     <!-- modal -->
     <div class="absolute inset-0 grid place-items-center p-4">
-      <div class="w-full max-w-md rounded-3xl bg-white shadow-xl border border-slate-200 overflow-hidden">
+      <div
+        class="w-full max-w-md rounded-3xl bg-white shadow-xl border border-slate-200 overflow-hidden"
+        @click.stop
+      >
         <div class="p-6">
           <h3 class="text-lg font-semibold text-slate-900">{{ state.title }}</h3>
           <p class="mt-2 text-sm text-slate-600 whitespace-pre-wrap">{{ state.message }}</p>

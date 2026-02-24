@@ -10,8 +10,19 @@ const state = reactive({
   _resolve: null,
 })
 
+function safeResolve(val) {
+  const r = state._resolve
+  state._resolve = null
+  state.open = false
+  r?.(val)
+}
+
 export function useConfirm() {
   const ask = ({ title, message, confirmText, cancelText, danger } = {}) => {
+    if (state.open && state._resolve) {
+      safeResolve(false)
+    }
+
     state.title = title || 'Confirm'
     state.message = message || ''
     state.confirmText = confirmText || 'Yes'
@@ -24,17 +35,8 @@ export function useConfirm() {
     })
   }
 
-  const confirm = () => {
-    state.open = false
-    state._resolve?.(true)
-    state._resolve = null
-  }
-
-  const cancel = () => {
-    state.open = false
-    state._resolve?.(false)
-    state._resolve = null
-  }
+  const confirm = () => safeResolve(true)
+  const cancel = () => safeResolve(false)
 
   return { state, ask, confirm, cancel }
 }

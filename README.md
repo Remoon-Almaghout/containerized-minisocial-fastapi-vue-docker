@@ -40,8 +40,6 @@
 
 MiniSocial ist eine moderne Full-Stack Social-Media-Webanwendung mit Benutzerregistrierung, Authentifizierung, Posts, Bild-Upload, Likes, Kommentaren und Profilseiten.
 
-# 🚀 MiniSocial
-
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green?logo=fastapi)
 ![Vue](https://img.shields.io/badge/Vue-3.x-42b883?logo=vue.js)
 ![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker)
@@ -187,12 +185,18 @@ minisocial/
 │ │ ├── api/
 │ │ ├── components/
 │ │ ├── router/
+│ │ ├── services/
 │ │ ├── ui/
+│ │ ├── utils/
 │ │ ├── views/
-│ │ ├── App.vue
-│ │ ├── auth.js
-│ │ └── main.js
-│ ├── tests/ # Playwright E2E Tests
+| | ├── App.vue
+| | ├── main.js
+| | └── style.css
+│ ├── tests/ e2e/
+│ ├│ ├──api
+│ ├│ ├──helpers
+│ ├│ ├──pages
+│ ├│ ├──specs
 │ ├── playwright.config.js
 │ ├── nginx.conf
 │ ├── Dockerfile
@@ -212,6 +216,8 @@ minisocial/
 Frontend: https://containerized-minisocial-fastapi-vu.vercel.app  
 Backend (Swagger): https://minisocial-backend-n4ut.onrender.com/docs
 
+> Hinweis: Die Live-Demo nutzt kostenloses Hosting. SQLite-Daten und Uploads können bei Redeploy/Restart zurückgesetzt werden.
+
 ---
 
 # 🐳 Run with Docker
@@ -220,8 +226,6 @@ Backend (Swagger): https://minisocial-backend-n4ut.onrender.com/docs
 
 - Docker
 - Docker Compose
-
----
 
 ## Starten
 
@@ -253,18 +257,46 @@ http://localhost:8000/docs
 
 # 🧪 Tests
 
-E2E Tests ausführen:
+## Voraussetzungen (einmalig)
+
+```bash
+cd frontend
+npm install
+npm i -D @playwright/test cross-env
+npx playwright install
+```
+
+E2E (UI) Tests gegen Docker:
+
+# im Projekt-Root
+
+```bash
+docker compose up --build
+```
+
+# im frontend/
 
 ```bash
 cd frontend
 npm run test:e2e
+npm run test:api
 ```
 
-Getestet wird:
+## Getestet wird:
+
+#E2E (UI)
 
 - Routing
 - Register
 - Login
+- Posts erstellen
+- Kommentare hinzufügen & löschen
+- Profilseite öffnen
+
+#API
+
+- Auth: register → login → /auth/me
+- Posts: create → list → update → delete
 
 ---
 
