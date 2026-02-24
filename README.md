@@ -27,33 +27,33 @@ MiniSocial ist eine moderne **Full-Stack Social-Media Demo App** mit Registrieru
 
 ---
 
-## 🖼 Screenshots
+### 🖼 Screenshots
 
-### Feed (public)
+## Feed Public
 
 ![Public Feed](./docs/screenshots/feed-public.png)
 
-### Login
+## Login
 
 ![Login](./docs/screenshots/login.png)
 
-### Register
+## Register
 
 ![Register](./docs/screenshots/register.png)
 
-### Feed (eingeloggt)
+## Feed auth
 
 ![Feed (eingeloggt)](./docs/screenshots/feed-auth.png)
 
-### Profile
+## Profile
 
 ![Profilseite](./docs/screenshots/profile.png)
 
-### Swagger
+## Swaager
 
 ![Swagger](./docs/screenshots/Swagger-docs.png)
 
-### Docker
+## Docker
 
 ![Docker](./docs/screenshots/docker.png)
 
