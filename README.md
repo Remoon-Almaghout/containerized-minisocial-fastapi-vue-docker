@@ -1,33 +1,14 @@
-````md
-# MiniSocial
+# \*\*MiniSocial is a small social media demo app with:
 
-MiniSocial ist eine moderne **Full-Stack Social-Media Demo App** mit Registrierung, Login, Posts (CRUD), Bild-Upload, Likes, Kommentaren und Profilseiten.
-
-![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green?logo=fastapi)
-![Vue](https://img.shields.io/badge/Vue-3.x-42b883?logo=vue.js)
-![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker)
-![SQLite](https://img.shields.io/badge/Database-SQLite-blue)
-![JWT](https://img.shields.io/badge/Auth-JWT-orange)
-![Playwright](https://img.shields.io/badge/Tests-Playwright-45ba4b?logo=playwright)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
-
----
-
-## ✅ Features (Overview)
-
-- FastAPI Backend API
-- JWT Auth (geschützte Endpoints)
-- Posts CRUD (**Owner-protected**)
-- Image Upload (mit Validierung)
-- Likes & Comments
-- SQLite + Alembic Migrationen
-- Vue 3 + TailwindCSS
-- E2E Tests mit Playwright
-- Docker Compose Setup (Production-like)
-
----
-
-### 🖼 Screenshots
+- FastAPI (Backend API)
+- Auth (JWT)
+- Posts CRUD (owner protected)
+- Image upload with validation
+- Likes + Comments
+- SQLite + Alembic migrations
+- Vue 3 + Tailwind
+- E2E Testing with Playwright
+- Docker Compose setup\*\*
 
 ## Feed Public
 
@@ -57,11 +38,32 @@ MiniSocial ist eine moderne **Full-Stack Social-Media Demo App** mit Registrieru
 
 ![Docker](./docs/screenshots/docker.png)
 
+MiniSocial ist eine moderne Full-Stack Social-Media-Webanwendung mit Benutzerregistrierung, Authentifizierung, Posts, Bild-Upload, Likes, Kommentaren und Profilseiten.
+
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green?logo=fastapi)
+![Vue](https://img.shields.io/badge/Vue-3.x-42b883?logo=vue.js)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?logo=docker)
+![SQLite](https://img.shields.io/badge/Database-SQLite-blue)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
+![Playwright](https://img.shields.io/badge/Tests-Playwright-45ba4b?logo=playwright)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
+MiniSocial ist eine moderne **Full-Stack Social Media Web Application**, entwickelt mit:
+
+- ⚡ FastAPI (Backend API)
+- 🎨 Vue 3 + TailwindCSS (Frontend)
+- 🔐 JWT Authentication
+- 🗄 SQLite + Alembic Migrationen
+- 🐳 Docker Compose Setup
+- 🧪 E2E Testing mit Playwright
+
+Das Projekt demonstriert professionelle Architektur, saubere Trennung von Backend & Frontend sowie produktionsnahe Deployment-Strukturen.
+
 ---
 
-## ✨ Features (Details)
+# ✨ Features
 
-### 🔐 Authentication
+## 🔐 Authentication
 
 - Benutzerregistrierung
 - Login
@@ -70,30 +72,38 @@ MiniSocial ist eine moderne **Full-Stack Social-Media Demo App** mit Registrieru
 - Route Guards im Frontend
 - `/auth/me` User Endpoint
 
-### 📝 Posts
+---
+
+## 📝 Posts
 
 - Post erstellen
-- Post bearbeiten (**Owner only**)
-- Post löschen (**Owner only**)
+- Post bearbeiten (Owner only)
+- Post löschen (Owner only)
 - Bild-Upload mit Validierung
 - Pagination im Feed
 - Public Feed (Read-only)
 
-### ❤️ Likes
+---
+
+## ❤️ Likes
 
 - Like / Unlike
 - Live Like Count
 - `liked_by_me` Flag
 - Protected Actions
 
-### 💬 Comments
+---
+
+## 💬 Comments
 
 - Kommentar hinzufügen
-- Kommentar löschen (**Owner**)
+- Kommentar löschen (Owner)
 - Kommentar-Anzahl
 - Kommentar-Preview im Profil
 
-### 👤 Profile Page
+---
+
+## 👤 Profile Page
 
 - Benutzerprofil
 - Initialen-Avatar
@@ -103,7 +113,9 @@ MiniSocial ist eine moderne **Full-Stack Social-Media Demo App** mit Registrieru
   - Erhaltene Kommentare
 - Eigene Posts verwalten
 
-### 🎨 UI
+---
+
+## 🎨 UI
 
 - Modernes TailwindCSS Design
 - Card Layout
@@ -113,9 +125,9 @@ MiniSocial ist eine moderne **Full-Stack Social-Media Demo App** mit Registrieru
 
 ---
 
-## 🛠 Tech Stack
+# 🛠 Tech Stack
 
-### Backend
+## Backend
 
 - FastAPI
 - SQLAlchemy ORM
@@ -125,7 +137,7 @@ MiniSocial ist eine moderne **Full-Stack Social-Media Demo App** mit Registrieru
 - JWT (HS256)
 - Uvicorn
 
-### Frontend
+## Frontend
 
 - Vue 3 (Composition API)
 - Vue Router
@@ -134,14 +146,14 @@ MiniSocial ist eine moderne **Full-Stack Social-Media Demo App** mit Registrieru
 - Custom Toast System
 - Nginx (Production)
 
-### Testing
+## Testing
 
 - Playwright E2E Tests
 - Auth Flow Tests
 - CRUD Tests
 - Likes & Comments Tests
 
-### DevOps
+## DevOps
 
 - Docker
 - Docker Compose
@@ -150,9 +162,9 @@ MiniSocial ist eine moderne **Full-Stack Social-Media Demo App** mit Registrieru
 
 ---
 
-## 📦 Projektstruktur
+# 📦 Projektstruktur
 
-```text
+```
 minisocial/
 ├── backend/
 │   ├── alembic/
@@ -197,14 +209,13 @@ minisocial/
 ├── docker-compose.yml
 └── README.md
 ```
-````
 
 ---
 
 ## 🌍 Live Demo
 
-Frontend: [https://containerized-minisocial-fastapi-vu.vercel.app](https://containerized-minisocial-fastapi-vu.vercel.app)
-Backend (Swagger): [https://minisocial-backend-n4ut.onrender.com/docs](https://minisocial-backend-n4ut.onrender.com/docs)
+Frontend: https://containerized-minisocial-fastapi-vu.vercel.app  
+Backend (Swagger): https://minisocial-backend-n4ut.onrender.com/docs
 
 > Hinweis: Die Live-Demo nutzt kostenloses Hosting. SQLite-Daten und Uploads können bei Redeploy/Restart zurückgesetzt werden.
 
@@ -284,19 +295,19 @@ npm run test:api
 
 ---
 
-## 🔐 API Endpoints
+# 🔐 API Endpoints
 
-### Auth
+## Auth
 
-```text
+```
 POST /auth/register
 POST /auth/login
 GET  /auth/me
 ```
 
-### Posts
+## Posts
 
-```text
+```
 GET    /posts
 GET    /posts/me-feed
 POST   /posts
@@ -304,31 +315,31 @@ PUT    /posts/{id}
 DELETE /posts/{id}
 ```
 
-### Likes
+## Likes
 
-```text
+```
 POST   /posts/{id}/like
 DELETE /posts/{id}/like
 ```
 
-### Comments
+## Comments
 
-```text
+```
 GET    /posts/{id}/comments
 POST   /posts/{id}/comments
 DELETE /posts/comments/{id}
 ```
 
-### Users
+## Users
 
-```text
+```
 GET /users/{id}
 GET /users/{id}/posts
 ```
 
 ---
 
-## 🎯 Architektur Highlights
+# 🎯 Architektur Highlights
 
 - Saubere REST Struktur
 - Owner-based Access Control
@@ -339,6 +350,4 @@ GET /users/{id}/posts
 - Docker Production Build
 - E2E Testing
 
-```
-
-```
+---
