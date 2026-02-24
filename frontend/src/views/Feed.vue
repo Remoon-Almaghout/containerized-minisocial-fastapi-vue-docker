@@ -110,21 +110,26 @@ onMounted(async () => {
         v-for="post in posts"
         :key="post.id"
         :post="post"
+
         :showOwnerActions="!!me?.id && post.user_id === me.id"
-        :allowLike="isAuthed"
+        :allowLike="!!isAuthed"                 
         :editing="editingPostId === post.id"
         :editedContent="editedContent"
-        :showComments="!!showComments[post.id]"
-        :comments="commentsByPost[post.id] || []"
-        :newCommentText="newComment[post.id] || ''"
+
+        :showComments="!!showComments?.[post.id]"         
+        :comments="commentsByPost?.[post.id] || []"      
+        :newCommentText="newComment?.[post.id] || ''"     
+
         @edit="startEdit"
         @delete="deletePost"
         @save="saveEdit"
         @cancel="cancelEdit"
         @toggle-like="toggleLike"
         @toggle-comments="toggleComments"
+
         @update:editedContent="editedContent = $event"
         @update:newCommentText="newComment[post.id] = $event"
+
         @add-comment="addComment"
         @delete-comment="deleteComment"
       />

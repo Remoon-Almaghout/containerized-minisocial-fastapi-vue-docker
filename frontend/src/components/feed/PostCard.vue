@@ -22,7 +22,7 @@ const props = defineProps({
   editedContent: { type: String, default: '' },
 })
 
-defineEmits([
+const emit = defineEmits([
   'edit',
   'delete',
   'save',
@@ -34,8 +34,7 @@ defineEmits([
   'add-comment',
   'delete-comment',
 ])
-
-const isLoggedIn = computed(() => !!localStorage.getItem('access_token'))
+const isLoggedIn = computed(() => !!isAuthed.value)
 
 const initials = computed(() => {
   const name = props.post.username || 'U' + props.post.user_id
@@ -80,14 +79,14 @@ const imageUrl = computed(() => {
       <div v-if="showOwnerActions" class="flex items-center gap-2">
         <button
           v-if="!editing"
-          @click="$emit('edit', post)"
+          @click="emit('edit', post)"
           class="px-3 py-2 rounded-xl text-sm border border-slate-200 hover:bg-slate-50 transition"
         >
           Edit
         </button>
         <button
           v-if="!editing"
-          @click="$emit('delete', post.id)"
+          @click="emit('delete', post.id)"
           class="px-3 py-2 rounded-xl text-sm border border-red-200 text-red-600 hover:bg-red-50 transition"
         >
           Delete
@@ -106,19 +105,19 @@ const imageUrl = computed(() => {
       <div v-else class="space-y-3">
         <textarea
           :value="editedContent"
-          @input="$emit('update:editedContent', $event.target.value)"
+          @input="emit('update:editedContent', $event.target.value)"
           class="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-900/10"
           rows="3"
         />
         <div class="flex gap-2">
           <button
-            @click="$emit('save', post.id)"
+            @click="emit('save', post.id)"
             class="px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm hover:bg-emerald-700 transition"
           >
             Save
           </button>
           <button
-            @click="$emit('cancel')"
+            @click="emit('cancel')"
             class="px-4 py-2 rounded-xl border border-slate-200 text-sm hover:bg-slate-50 transition"
           >
             Cancel
@@ -141,7 +140,7 @@ const imageUrl = computed(() => {
       <div class="flex items-center gap-3">
         <button
           v-if="allowLike"
-          @click="$emit('toggle-like', post)"
+          @click="emit('toggle-like', post)"
           class="px-3 py-2 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm"
         >
           <span class="mr-1">{{ post.liked_by_me ? '❤️' : '🤍' }}</span>
@@ -155,7 +154,7 @@ const imageUrl = computed(() => {
 
       <button
         class="px-3 py-2 rounded-xl text-sm border border-slate-200 hover:bg-slate-50 transition"
-        @click.stop="$emit('toggle-comments', post.id)"
+        @click.stop="emit('toggle-comments', post.id)"
       >
         Comments
       </button>
@@ -175,10 +174,10 @@ const imageUrl = computed(() => {
             class="rounded-2xl border border-slate-200 bg-white px-4 py-3 flex items-start justify-between gap-3"
           >
             <p class="text-sm text-slate-800">{{ c.content }}</p>
-            
+
             <button
               v-if="canDeleteComment(c)"
-              @click="$emit('delete-comment', c.id ?? c.comment_id, post.id)"
+              @click="emit('delete-comment', c.id ?? c.comment_id, post.id)"
               class="text-xs text-red-600 hover:underline"
             >
               Delete
@@ -191,12 +190,12 @@ const imageUrl = computed(() => {
           <div class="flex gap-2">
             <input
               :value="newCommentText"
-              @input="$emit('update:newCommentText', $event.target.value)"
+              @input="emit('update:newCommentText', $event.target.value)"
               class="flex-1 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-900/10"
               placeholder="Write a comment…"
             />
             <button
-              @click="$emit('add-comment', post.id)"
+              @click="emit('add-comment', post.id)"
               class="px-4 py-3 rounded-2xl bg-slate-900 text-white text-sm font-medium hover:bg-slate-800 transition"
             >
               Send

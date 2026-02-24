@@ -1,54 +1,7 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuth } from '../composables/useAuth'
-
-const username = ref('')
-const email = ref('')
-const password = ref('')
-const error = ref('')
-const loading = ref(false)
-
-const router = useRouter()
-const { register: doRegister } = useAuth()
-
-const register = async () => {
-  error.value = ''
-
-  const u = username.value.trim()
-  const e = email.value.trim()
-
-  if (!u || !e || !password.value) {
-    error.value = 'Bitte alle Felder ausfüllen.'
-    return
-  }
-
-  // optional: schnelle client-side validation
-  if (password.value.length < 6) {
-    error.value = 'Passwort muss mindestens 6 Zeichen haben.'
-    return
-  }
-
-  loading.value = true
-  try {
-    await doRegister({
-      username: u,
-      email: e,
-      password: password.value,
-    })
-
-    router.push('/feed')
-  } catch (err) {
-    error.value =
-      err.response?.data?.detail ||
-      err.response?.data?.message ||
-      (err.request ? 'Server nicht erreichbar / CORS Problem.' : 'Registrierung fehlgeschlagen.')
-  } finally {
-    loading.value = false
-  }
-}
+import { useRegister } from '../composables/useRegister'
+const { username, email, password, error, loading, register } = useRegister()
 </script>
-
 <template>
   <div class="max-w-md mx-auto">
     <div class="bg-white border border-slate-200 rounded-3xl shadow-sm p-8">

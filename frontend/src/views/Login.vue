@@ -1,45 +1,6 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuth } from '../composables/useAuth'
-
-const { login: doLogin } = useAuth()
-
-const email = ref('')
-const password = ref('')
-const error = ref('')
-const loading = ref(false)
-
-const router = useRouter()
-
-const login = async () => {
-  error.value = ''
-
-  const emailTrimmed = email.value.trim()
-
-  if (!emailTrimmed || !password.value) {
-    error.value = 'Bitte Email und Passwort eingeben.'
-    return
-  }
-
-  loading.value = true
-  try {
-    await doLogin({
-      email: emailTrimmed,
-      username: emailTrimmed,
-      password: password.value,
-    })
-
-    router.push('/feed')
-  } catch (e) {
-    error.value =
-      e.response?.data?.detail ||
-      e.response?.data?.message ||
-      (e.request ? 'Server nicht erreichbar / CORS Problem.' : 'Login fehlgeschlagen.')
-  } finally {
-    loading.value = false
-  }
-}
+import { useLogin } from '../composables/useLogin'
+const { email, password, error, loading, login } = useLogin()
 </script>
 
 <template>

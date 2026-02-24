@@ -4,6 +4,7 @@ import { useProfile } from '../composables/useProfile'
 
 const {
   me,
+  isAuthed,
   user,
   posts,
   loadingProfile,
@@ -108,12 +109,12 @@ const {
             :key="post.id"
             :post="post"
             :showOwnerActions="isMyProfile"
-            :allowLike="!!me?.id"
+            :allowLike="!!isAuthed"
             :editing="editingPostId === post.id"
             :editedContent="editedContent"
-            :showComments="!!showComments[post.id]"
-            :comments="commentsByPost[post.id] || []"
-            :newCommentText="newComment[post.id] || ''"
+            :showComments="!!showComments?.[post.id]"
+            :comments="commentsByPost?.[post.id] || []"
+            :newCommentText="newComment?.[post.id] || ''"
             @edit="startEdit"
             @delete="deletePost"
             @save="saveEdit"
