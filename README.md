@@ -184,6 +184,7 @@ minisocial/
 │   ├── src/
 │   │   ├── api/
 │   │   ├── components/
+│   │   ├── composables/
 │   │   ├── router/
 │   │   ├── services/
 │   │   ├── ui/
