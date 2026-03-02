@@ -1,44 +1,4 @@
-# \*\*MiniSocial is a small social media demo app with:
-
-- FastAPI (Backend API)
-- Auth (JWT)
-- Posts CRUD (owner protected)
-- Image upload with validation
-- Likes + Comments
-- SQLite + Alembic migrations
-- Vue 3 + Tailwind
-- E2E Testing with Playwright
-- Docker Compose setup\*\*
-
-## Feed Public
-
-![Public Feed](./docs/screenshots/feed-public.png)
-
-## Login
-
-![Login](./docs/screenshots/login.png)
-
-## Register
-
-![Register](./docs/screenshots/register.png)
-
-## Feed auth
-
-![Feed (eingeloggt)](./docs/screenshots/feed-auth.png)
-
-## Profile
-
-![Profilseite](./docs/screenshots/profile.png)
-
-## Swaager
-
-![Swagger](./docs/screenshots/Swagger-docs.png)
-
-## Docker
-
-![Docker](./docs/screenshots/docker.png)
-
-MiniSocial ist eine moderne Full-Stack Social-Media-Webanwendung mit Benutzerregistrierung, Authentifizierung, Posts, Bild-Upload, Likes, Kommentaren und Profilseiten.
+## MiniSocial is a modern **Full-Stack Social Media Web Application**, built with:
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green?logo=fastapi)
 ![Vue](https://img.shields.io/badge/Vue-3.x-42b883?logo=vue.js)
@@ -46,18 +6,15 @@ MiniSocial ist eine moderne Full-Stack Social-Media-Webanwendung mit Benutzerreg
 ![SQLite](https://img.shields.io/badge/Database-SQLite-blue)
 ![JWT](https://img.shields.io/badge/Auth-JWT-orange)
 ![Playwright](https://img.shields.io/badge/Tests-Playwright-45ba4b?logo=playwright)
-![License](https://img.shields.io/badge/License-MIT-lightgrey)
-
-MiniSocial ist eine moderne **Full-Stack Social Media Web Application**, entwickelt mit:
 
 - ⚡ FastAPI (Backend API)
 - 🎨 Vue 3 + TailwindCSS (Frontend)
 - 🔐 JWT Authentication
-- 🗄 SQLite + Alembic Migrationen
+- 🗄 SQLite + Alembic Migrations
 - 🐳 Docker Compose Setup
-- 🧪 E2E Testing mit Playwright
+- 🧪 E2E Testing with Playwright
 
-Das Projekt demonstriert professionelle Architektur, saubere Trennung von Backend & Frontend sowie produktionsnahe Deployment-Strukturen.
+This project demonstrates professional architecture, clean separation of backend and frontend, and production-ready deployment structures.
 
 ---
 
@@ -65,63 +22,63 @@ Das Projekt demonstriert professionelle Architektur, saubere Trennung von Backen
 
 ## 🔐 Authentication
 
-- Benutzerregistrierung
+- User registration
 - Login
-- JWT Access Token
-- Protected API Endpoints
-- Route Guards im Frontend
-- `/auth/me` User Endpoint
+- JWT access token
+- Protected API endpoints
+- Frontend route guards
+- `/auth/me` user endpoint
 
 ---
 
 ## 📝 Posts
 
-- Post erstellen
-- Post bearbeiten (Owner only)
-- Post löschen (Owner only)
-- Bild-Upload mit Validierung
-- Pagination im Feed
-- Public Feed (Read-only)
+- Create posts
+- Edit posts (owner only)
+- Delete posts (owner only)
+- Image upload with validation
+- Feed pagination
+- Public feed (read-only)
 
 ---
 
 ## ❤️ Likes
 
-- Like / Unlike
-- Live Like Count
-- `liked_by_me` Flag
-- Protected Actions
+- Like / Unlike posts
+- Live like count
+- `liked_by_me` flag
+- Protected actions
 
 ---
 
 ## 💬 Comments
 
-- Kommentar hinzufügen
-- Kommentar löschen (Owner)
-- Kommentar-Anzahl
-- Kommentar-Preview im Profil
+- Add comments
+- Delete comments (owner only)
+- Comment count
+- Comment preview on profile
 
 ---
 
 ## 👤 Profile Page
 
-- Benutzerprofil
-- Initialen-Avatar
-- Statistiken:
-  - Anzahl Posts
-  - Erhaltene Likes
-  - Erhaltene Kommentare
-- Eigene Posts verwalten
+- User profile
+- Initials avatar
+- Statistics:
+  - Number of posts
+  - Received likes
+  - Received comments
+- Manage own posts
 
 ---
 
 ## 🎨 UI
 
-- Modernes TailwindCSS Design
-- Card Layout
-- Toast Notifications
-- Confirm Modal
-- Responsive Layout
+- Modern TailwindCSS design
+- Card layout
+- Toast notifications
+- Confirmation modal
+- Responsive layout
 
 ---
 
@@ -131,7 +88,7 @@ Das Projekt demonstriert professionelle Architektur, saubere Trennung von Backen
 
 - FastAPI
 - SQLAlchemy ORM
-- Alembic Migrationen
+- Alembic Migrations
 - SQLite
 - Pydantic
 - JWT (HS256)
@@ -143,26 +100,26 @@ Das Projekt demonstriert professionelle Architektur, saubere Trennung von Backen
 - Vue Router
 - Axios
 - TailwindCSS
-- Custom Toast System
+- Custom toast system
 - Nginx (Production)
 
 ## Testing
 
-- Playwright E2E Tests
-- Auth Flow Tests
-- CRUD Tests
-- Likes & Comments Tests
+- Playwright E2E tests
+- Authentication flow tests
+- CRUD tests
+- Likes & comments tests
 
 ## DevOps
 
 - Docker
 - Docker Compose
-- Multi-Stage Build
-- Production-ready Setup
+- Multi-stage build
+- Production-ready setup
 
 ---
 
-# 📦 Projektstruktur
+# 📦 Project Structure
 
 ```
 minisocial/
@@ -217,24 +174,24 @@ minisocial/
 Frontend: https://containerized-minisocial-fastapi-vu.vercel.app  
 Backend (Swagger): https://minisocial-backend-n4ut.onrender.com/docs
 
-> Hinweis: Die Live-Demo nutzt kostenloses Hosting. SQLite-Daten und Uploads können bei Redeploy/Restart zurückgesetzt werden.
+>  Note: The live demo uses free hosting. SQLite data and uploads may reset after redeploy or restart.
 
 ---
 
 ## 🐳 Run with Docker
 
-### Voraussetzungen
+### Requirements
 
 - Docker
 - Docker Compose
 
-### Starten
+### Start
 
 ```bash
 docker compose up --build
 ```
 
-> Migrationen laufen automatisch beim Start des Backend-Containers.
+> Database migrations run automatically when the backend container starts.
 
 ### URLs
 
@@ -246,7 +203,7 @@ docker compose up --build
 
 ## 🧪 Tests
 
-### Voraussetzungen (einmalig)
+### Requirements (one-time setup)
 
 ```bash
 cd frontend
@@ -255,38 +212,38 @@ npm i -D @playwright/test cross-env
 npx playwright install
 ```
 
-### Tests ausführen
+### Run Tests
 
-#### 1) Docker starten (im Projekt-Root)
+#### 1) Start Docker (project root)
 
 ```bash
 docker compose up --build
 ```
 
-#### 2) E2E (UI) Tests (im `frontend/`)
+#### 2) E2E (UI) Tests (`frontend/`)
 
 ```bash
 cd frontend
 npm run test:e2e
 ```
 
-#### 3) API Tests (im `frontend/`)
+#### 3) API Tests (`frontend/`)
 
 ```bash
 cd frontend
 npm run test:api
 ```
 
-### Was wird getestet?
+### What is tested?
 
 #### ✅ E2E (UI)
 
 - Routing
 - Register
 - Login
-- Posts erstellen
-- Kommentare hinzufügen & löschen
-- Profilseite öffnen
+- Create posts
+- Add & delete comments
+- Open profile page
 
 #### ✅ API
 
@@ -341,13 +298,42 @@ GET /users/{id}/posts
 
 # 🎯 Architektur Highlights
 
-- Saubere REST Struktur
-- Owner-based Access Control
-- Stateless JWT Authentication
+- Clean REST structure
+- Owner-based access control
+- Stateless JWT authentication
 - Pagination Support
 - File Upload Handling
-- Migration-basierte Datenbankverwaltung
+- Migration-based database management
 - Docker Production Build
 - E2E Testing
 
 ---
+## Feed Public
+
+![Public Feed](./docs/screenshots/feed-public.png)
+
+## Login
+
+![Login](./docs/screenshots/login.png)
+
+## Register
+
+![Register](./docs/screenshots/register.png)
+
+## Feed auth
+
+![Feed (eingeloggt)](./docs/screenshots/feed-auth.png)
+
+## Profile
+
+![Profilseite](./docs/screenshots/profile.png)
+
+## Swagger
+
+![Swagger](./docs/screenshots/Swagger-docs.png)
+
+## Docker
+
+![Docker](./docs/screenshots/docker.png)
+---
+
