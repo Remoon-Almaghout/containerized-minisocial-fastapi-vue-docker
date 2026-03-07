@@ -174,7 +174,7 @@ minisocial/
 Frontend: https://containerized-minisocial-fastapi-vu.vercel.app  
 Backend (Swagger): https://minisocial-backend-n4ut.onrender.com/docs
 
->  Note: The live demo uses free hosting. SQLite data and uploads may reset after redeploy or restart.
+> Note: The live demo uses free hosting. SQLite data and uploads may reset after redeploy or restart.
 
 ---
 
@@ -308,6 +308,7 @@ GET /users/{id}/posts
 - E2E Testing
 
 ---
+
 ## Feed Public
 
 ![Public Feed](./docs/screenshots/feed-public.png)
@@ -334,6 +335,4 @@ GET /users/{id}/posts
 
 ## Docker
 
-![Docker](./docs/screenshots/docker.png)
----
-
+## ![Docker](./docs/screenshots/docker.png)

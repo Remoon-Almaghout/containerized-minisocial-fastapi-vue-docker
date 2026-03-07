@@ -17,12 +17,12 @@ export function useRegister() {
     const e = email.value.trim()
 
     if (!u || !e || !password.value) {
-      error.value = 'Bitte alle Felder ausfüllen.'
+      error.value = 'Please fill in all fields.'
       return
     }
 
     if (password.value.length < 6) {
-      error.value = 'Passwort muss mindestens 6 Zeichen haben.'
+      error.value = 'Password must be at least 6 characters long.'
       return
     }
 
@@ -31,7 +31,7 @@ export function useRegister() {
       await doRegister({ username: u, email: e, password: password.value })
       router.push('/feed')
     } catch (err) {
-      setErrorFromRequest(err, 'Registrierung fehlgeschlagen.')
+      setErrorFromRequest(err, 'Registration failed.')
     } finally {
       loading.value = false
     }

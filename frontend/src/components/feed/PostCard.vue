@@ -204,9 +204,9 @@ const imageUrl = computed(() => {
         </div>
 
         <p v-else class="text-sm text-slate-500">
-          Bitte
-          <RouterLink to="/login" class="text-slate-900 font-semibold hover:underline">einloggen</RouterLink>,
-          um zu kommentieren.
+          Please
+          <RouterLink to="/login" class="text-slate-900 font-semibold hover:underline">login</RouterLink>,
+          to comment.
         </p>
       </div>
     </div>

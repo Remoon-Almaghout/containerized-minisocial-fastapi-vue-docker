@@ -46,7 +46,7 @@ const {
     <div v-else-if="!user" class="rounded-3xl border border-slate-200 bg-white shadow-sm p-6">
       <h2 class="text-lg font-semibold">User not found</h2>
       <p class="text-sm text-slate-500 mt-1">
-        Dieser Benutzer existiert nicht (oder konnte nicht geladen werden).
+        This user does not exist (or could not be loaded).
       </p>
     </div>
 

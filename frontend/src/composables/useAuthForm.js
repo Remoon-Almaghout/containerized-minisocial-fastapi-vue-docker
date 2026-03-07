@@ -10,11 +10,11 @@ export function useAuthForm() {
     error.value = ''
   }
 
-  const setErrorFromRequest = (err, fallback = 'Fehler.') => {
+  const setErrorFromRequest = (err, fallback = 'Error .') => {
     error.value =
       err?.response?.data?.detail ||
       err?.response?.data?.message ||
-      (err?.request ? 'Server nicht erreichbar / CORS Problem.' : fallback)
+      (err?.request ? 'Server unreachable / CORS problem.' : fallback)
   }
 
   return {

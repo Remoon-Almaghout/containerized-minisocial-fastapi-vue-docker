@@ -98,9 +98,9 @@ onMounted(async () => {
 
     <div v-else class="rounded-3xl border border-slate-200 bg-white shadow-sm p-5">
       <p class="text-sm text-slate-600">
-        Bitte
-        <RouterLink to="/login" class="text-slate-900 font-semibold hover:underline">einloggen</RouterLink>,
-        um Posts zu erstellen, zu liken und zu kommentieren.
+        Please
+        <RouterLink to="/login" class="text-slate-900 font-semibold hover:underline">login</RouterLink>,
+        to create, like and comment on posts.
       </p>
     </div>
 

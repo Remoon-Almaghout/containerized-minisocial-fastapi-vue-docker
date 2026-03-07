@@ -50,7 +50,7 @@ export function useProfile() {
     } catch (err) {
       user.value = null
       posts.value = []
-      push(getErrorMessage(err, 'Profil konnte nicht geladen werden ❌'), 'error')
+      push(getErrorMessage(err, 'Profile could not be loaded ❌'), 'error')
       console.error(err)
     } finally {
       loadingProfile.value = false

@@ -50,7 +50,7 @@ export function useFeed() {
         offset.value += limit.value
       }
     } catch (err) {
-      push(getErrorMessage(err, 'Fehler beim Laden der Posts ❌'), 'error')
+      push(getErrorMessage(err, 'Error loading posts ❌'), 'error')
       console.error(err)
     } finally {
       loading.value = false
@@ -70,7 +70,7 @@ export function useFeed() {
 
     const text = content.value.trim()
     if (!text) {
-      push('Content darf nicht leer sein ❌', 'error')
+      push('Content must not be empty ❌', 'error')
       return
     }
 

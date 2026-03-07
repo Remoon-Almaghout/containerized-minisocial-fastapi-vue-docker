@@ -14,7 +14,7 @@ export function useLogin() {
 
     const e = email.value.trim()
     if (!e || !password.value) {
-      error.value = 'Bitte Email und Passwort eingeben.'
+      error.value = 'Please enter your email address and password.'
       return
     }
 
@@ -22,12 +22,12 @@ export function useLogin() {
     try {
       await doLogin({
         email: e,
-        username: e, // falls dein Backend username akzeptiert/erwartet
+        username: e,
         password: password.value,
       })
       router.push('/feed')
     } catch (err) {
-      setErrorFromRequest(err, 'Login fehlgeschlagen.')
+      setErrorFromRequest(err, 'Login failed.')
     } finally {
       loading.value = false
     }
